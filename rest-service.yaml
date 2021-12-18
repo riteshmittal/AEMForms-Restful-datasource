@@ -1,0 +1,79 @@
+swagger: '2.0'
+info:
+  description: Tech Talk with Ritesh Swagger API
+  version: 1.0.0
+  title: Tech Talk with Ritesh Swagger API
+schemes:
+  - http
+produces:
+  - application/json
+consumes:
+  - application/json
+host: 'localhost:4502'
+paths:
+  /bin/techtalkwithritesh/kids:
+    get:
+      summary: Fetch All Kids
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      operationId: GetKids
+      responses:
+        '200':
+          description: GetKids output
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Kids'
+        '405':
+          description: Invalid input
+    post:
+      summary: Add New Kid
+      operationId: AddUser
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - text/plain; charset=utf-8
+      parameters:
+        - in: formData
+          name: name
+          type: string
+          description: name
+        - in: formData
+          name: email
+          type: string
+          description: email
+        - in: formData
+          name: dob
+          type: string
+          description: dob
+        - in: formData
+          name: gender
+          type: string
+          description: gender
+        - in: formData
+          name: grade
+          type: string
+          description: grade
+      responses:
+        '200':
+          description: Kids output
+          schema:
+            type: boolean
+        '405':
+          description: Invalid input
+definitions:
+  Kids:
+    type: object
+    properties:
+      name:
+        type: string
+      email:
+        type: string
+      dob:
+        type: string
+      gender:
+        type: string
+      grade:
+        type: string
